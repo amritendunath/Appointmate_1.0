@@ -1,11 +1,11 @@
-# Multi-Agent Appointment Booking System
+# Appointmate_1.0: A Multi-Agent Appointment Booking System
 
-This project implements a **multi-agent system** for appointment booking using **LangGraph**. The system allows users to interact in **natural language** to inquire about doctor availability, set, reschedule, or cancel appointments while maintaining conversational context.
+Appointmate implements a **multi-agent system** for appointment booking using **LangGraph**. The system allows users to interact in **natural language** to inquire about doctor availability, set, reschedule, or cancel appointments while maintaining conversational context.
 
-## 🎥 Video Demo  
-[![Watch the demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=ySkK4nvvNJE)  
+<!-- ## 🎥 Video Demo  
+[![Watch the demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=ySkK4nvvNJE)   -->
 
-Click the image above to watch the demo on YouTube.
+<!-- Click the image above to watch the demo on YouTube. -->
 
 ## ✨ Key Features
 
@@ -27,7 +27,7 @@ The system consists of:
 - **SQLite Database**: Stores session-based chat conversations.
 - **LangSmith Monitoring**: Observes agent activity and flow execution.
 
-![Architecture Overview](architecture/e2e_flow.png)
+<!-- ![Architecture Overview](architecture/e2e_flow.png) -->
 
 ## 🔄 Multi-Agent Flow in LangGraph
 
@@ -40,15 +40,15 @@ The **LangGraph**-powered agentic workflow includes:
 - **Update Information Tools**: Tools to fetch doctor's availability.
 - **Exit & Context Management**: Manages session flow and conversation termination.
 
-![LangGraph Flow](architecture/langgraph.png)
+<!-- ![LangGraph Flow](architecture/langgraph.png) -->
 
 
 ## 🚀 Getting Started
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/your-repo/Multi-Agent-Appointment-Booking.git
-cd Multi-Agent-Appointment-Booking 
+git clone https://github.com/amritendunath/Appointmate_1.0.git
+cd Appointmate_1.0
 ```
 
 ### 2️⃣ Install Dependencies
@@ -86,4 +86,4 @@ streamlit run front-end/chat_ui.py
 
 For issues or contributions, create a pull request or open an issue. 🚀  
 
-Connect with me on **[LinkedIn (Anurag Mishra)](https://www.linkedin.com/in/anurag-mishra-660961b7/)**.
+Connect with me on **[LinkedIn (Amritendu Nath)](https://www.linkedin.com/in/amritendunath/)**.
