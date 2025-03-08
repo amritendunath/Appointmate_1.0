@@ -31,3 +31,15 @@ def make_api_call(prompt: str) -> dict:
         st.error(f"An error occurred: {str(e)}")
 
     return {"answer": "Error retrieving response"}  # Fallback response
+
+# Initialize chat history and thread ID
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+if "thread_id" not in st.session_state:
+    st.session_state.thread_id = generate_uuid()
+
+# Display previous messages
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
