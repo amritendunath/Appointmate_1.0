@@ -25,3 +25,19 @@ class ToGetInfo(BaseModel):
     request: str = Field(
         description="Any additional information or requests from the user regarding the appointment."
     )
+
+class ToAppointmentBookingAssistant(BaseModel):
+    """Transfer work to a specialized assistant to handle hotel bookings."""
+
+    date:DateTimeModel = Field(
+        description="The date for setting, cancel or rescheduling appointment"
+    )
+    identification_number: IdentificationNumberModel = Field(
+        description="The id number of user."
+    )
+    doctor_number: str = Field(
+        description="The name of the doctor"
+    )
+    request: str = Field(
+        description="Any additional information or requests from the user regarding the hotel booking."
+    )
