@@ -12,3 +12,16 @@ class DateTimeModel(BaseModel):
         if not re.match(r'^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$', v):
             raise ValueError("The date should be in format 'YYYY-MM-DD HH:MM'")
         return v
+    
+
+class DateModel(BaseModel):
+    """
+    The way the date should be structured and formatted
+    """
+    date: str = Field(..., description="Propertly formatted date", pattern=r'^\d{2}-\d{2}-\d{4}$')
+
+    @validator("date")
+    def check_format_date(cls, v):
+        if not re.match(r'^\d{2}-\d{2}-\d{4}$', v):
+            raise ValueError("The date must be in the format 'YYYY-MM-DD'")
+        return v
