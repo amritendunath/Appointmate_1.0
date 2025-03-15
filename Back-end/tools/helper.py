@@ -79,3 +79,16 @@ def pop_dialog_state(state: State) -> dict:
         "dialog_state": "pop",
         "messages": messages,
     }
+
+def route_to_workflow(
+    state: State,
+) -> Literal[
+    "primary_assistant",
+    "appointment_info",
+    "get_info",
+]:
+    """If we are in a delegated state, route directly to the appropriate assistant."""
+    dialog_state = state.get("dialog_state")
+    if not dialog_state:
+        return "primary_assistant"
+    return dialog_state[-1]
