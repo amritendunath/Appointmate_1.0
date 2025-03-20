@@ -9,3 +9,16 @@ def update_dialog_stack(left: list[str], right: Optional[str]) -> list[str]:
     if right == "pop":
         return left[:-1]
     return left + [right]
+
+class State(TypedDict):
+    messages: Annotated[list[AnyMessage], add_messages]
+    dialog_state: Annotated[
+        list[
+            Literal[
+                "assistant",
+                "get_info",
+                "appointment_info",
+            ]
+        ],
+        update_dialog_stack,
+    ]
