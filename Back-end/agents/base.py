@@ -5,7 +5,7 @@ class Assistant:
     def __init__(self, runnable: Runnable):
         self.runnable = runnable
 
-def __call__(self, state: State, config: RunnableConfig):
+    def __call__(self, state: State, config: RunnableConfig):
         while True:
             result = self.runnable.invoke(state)
 
