@@ -12,3 +12,26 @@ router = APIRouter()
 
 graph = build_graph()
 logging.info('Loaded graph')
+
+@router.post("/generate-stream/", response_model=GenerationResponse, responses={500: {"model": ErrorResponse}})
+async def generation_streaming(request: GenerationRequest,thread_id: str = Header('111222', alias="X-THREAD-ID")):
+    query = request.query
+    logging.info(f'Received the Query - {query} & thread_id - {thread_id}')
+    inputs = [
+        HumanMessage(content=query)
+    ]
+    state = {'messages': inputs}
+    config = {"configurable": {"thread_id": thread_id, "recursion_limit": 10}}  
+    response = graph.invoke(input=state,config=config)
+
+    logging.info('Generated Answer from Graph')
+    dialog_states = response['dialog_state']
+    dialog_state = dialog_states[-1] if dialog_states else 'primary_assistant'
+    
+    messages = response['messages'][-1].content
+
+    return JSONResponse({
+        'dialog_state': dialog_state if dialog_state else '',
+        'answer': messages if messages else ''
+    })
+    
