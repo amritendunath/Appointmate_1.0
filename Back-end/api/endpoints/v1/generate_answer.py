@@ -6,3 +6,9 @@ from fastapi import FastAPI, HTTPException, Header, Query
 from agents.builder import build_graph
 import logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+
+
+router = APIRouter()
+
+graph = build_graph()
+logging.info('Loaded graph')
