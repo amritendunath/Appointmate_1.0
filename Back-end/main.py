@@ -29,3 +29,8 @@ app.add_middleware(
 app.include_router(generate_answer_router)
 
 print("Backend API is running")
+
+asyncio.set_event_loop_policy(asyncio.DefaultEventLoopPolicy())
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0")
