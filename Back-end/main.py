@@ -13,3 +13,19 @@ app = FastAPI(
     openapi_url="/openapi.json",
     docs_url="/",
 )
+
+@app.get("/health")
+async def health_check():
+    return PlainTextResponse("OK")
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+app.include_router(generate_answer_router)
+
+print("Backend API is running")
