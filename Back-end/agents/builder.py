@@ -62,3 +62,10 @@ booking_runnable = get_runnable(
                 tools= booking_tools + [CompleteOrEscalate],
                 agent_prompt=booking_agent_prompt
 )
+
+primary_tools = [ToAppointmentBookingAssistant,ToGetInfo,ToPrimaryBookingAssistant,CompleteOrEscalate]
+primary_runnable = get_runnable(
+                                llm=llm,
+                                tools= primary_tools,
+                                agent_prompt=primary_agent_prompt
+)
