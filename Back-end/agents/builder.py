@@ -40,3 +40,11 @@ os.environ["LANGCHAIN_TRACING_V2"] = 'true'
 os.environ["LANGCHAIN_ENDPOINT"] = Azure_Creds.LANGCHAIN_ENDPOINT
 os.environ["LANGCHAIN_API_KEY"] = Azure_Creds.LANGCHAIN_API_KEY
 os.environ["LANGCHAIN_PROJECT"] = Azure_Creds.LANGCHAIN_PROJECT
+
+
+llm = AzureChatOpenAI(temperature=0,
+                           api_key=Azure_Creds.AZURE_OPENAI_API_KEY,
+                           azure_endpoint=Azure_Creds.AZURE_OPENAI_ENDPOINT,
+                           openai_api_version=Azure_Creds.AZURE_OPENAI_VERSION,
+                           azure_deployment=Azure_Creds.AZURE_GPT4O_MODEL
+                           )
