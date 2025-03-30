@@ -48,3 +48,10 @@ llm = AzureChatOpenAI(temperature=0,
                            openai_api_version=Azure_Creds.AZURE_OPENAI_VERSION,
                            azure_deployment=Azure_Creds.AZURE_GPT4O_MODEL
                            )
+
+info_tools = [check_availability_by_specialization,check_availability_by_doctor]
+info_runnable = get_runnable(
+                llm=llm,
+                tools= info_tools + [CompleteOrEscalate],
+                agent_prompt=info_agent_prompt
+)
