@@ -55,3 +55,10 @@ info_runnable = get_runnable(
                 tools= info_tools + [CompleteOrEscalate],
                 agent_prompt=info_agent_prompt
 )
+
+booking_tools = [set_appointment,reschedule_appointment,cancel_appointment]
+booking_runnable = get_runnable(
+                llm=llm,
+                tools= booking_tools + [CompleteOrEscalate],
+                agent_prompt=booking_agent_prompt
+)
