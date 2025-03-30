@@ -29,3 +29,14 @@ from utils.helper import (
 from utils.config import get_settings
 from langgraph.checkpoint.sqlite import SqliteSaver
 import sqlite3
+
+conn = sqlite3.connect('checkpoints.db',check_same_thread=False)
+
+memory = SqliteSaver(conn)
+
+Azure_Creds = get_settings()
+
+os.environ["LANGCHAIN_TRACING_V2"] = 'true'
+os.environ["LANGCHAIN_ENDPOINT"] = Azure_Creds.LANGCHAIN_ENDPOINT
+os.environ["LANGCHAIN_API_KEY"] = Azure_Creds.LANGCHAIN_API_KEY
+os.environ["LANGCHAIN_PROJECT"] = Azure_Creds.LANGCHAIN_PROJECT
