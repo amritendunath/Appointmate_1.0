@@ -100,3 +100,38 @@ def build_graph():
     )
     
     builder.add_node("leave_skill", pop_dialog_state)
+
+
+    builder.add_conditional_edges(START,route_to_workflow)
+
+    builder.add_conditional_edges(
+        "primary_assistant",
+        route_primary_assistant,
+        [
+            "enter_appointment_info",
+            "enter_get_info",
+            END,
+        ],
+    )
+
+    builder.add_edge("enter_get_info","get_info")
+    
+    builder.add_edge("update_info_tools", "get_info")
+    builder.add_conditional_edges(
+        "get_info",
+        RouteUpdater(info_tools,"update_info_tools").route_update_info,
+        ["update_info_tools", "leave_skill", END],
+    )
+
+    
+    builder.add_edge("leave_skill", "primary_assistant")
+
+    builder.add_edge("enter_appointment_info", "appointment_info")
+
+
+    builder.add_edge("update_appointment_tools", "appointment_info")
+    builder.add_conditional_edges(
+        "appointment_info",
+        RouteUpdater(booking_tools,"update_appointment_tools").route_update_info,
+        ["update_appointment_tools", "leave_skill", END],
+    )
