@@ -69,3 +69,34 @@ primary_runnable = get_runnable(
                                 tools= primary_tools,
                                 agent_prompt=primary_agent_prompt
 )
+
+
+
+def build_graph():
+    builder = StateGraph(State)
+
+    builder.add_node("primary_assistant", Assistant(primary_runnable))
+
+    builder.add_node(
+        "enter_get_info",
+        create_entry_node("Get Information Assistant", "get_info"),
+    )
+    builder.add_node(
+        "enter_appointment_info",
+        create_entry_node("Appointment Assistant", "appointment_info"),
+    )
+    
+    builder.add_node("get_info", Assistant(info_runnable))
+    builder.add_node("appointment_info", Assistant(booking_runnable))
+
+    builder.add_node(
+        "update_info_tools",
+        create_tool_node_with_fallback(info_tools),
+    )
+
+    builder.add_node(
+        "update_appointment_tools",
+        create_tool_node_with_fallback(booking_tools),
+    )
+    
+    builder.add_node("leave_skill", pop_dialog_state)
