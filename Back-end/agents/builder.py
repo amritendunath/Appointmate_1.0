@@ -135,3 +135,10 @@ def build_graph():
         RouteUpdater(booking_tools,"update_appointment_tools").route_update_info,
         ["update_appointment_tools", "leave_skill", END],
     )
+    
+    memory = MemorySaver()
+    graph = builder.compile(
+        checkpointer=memory,
+    )
+
+    return graph
